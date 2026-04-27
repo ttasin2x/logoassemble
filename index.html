@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangladesh Scouts - Ultra Smooth Assembly</title>
+    <title>Bangladesh Scouts - Cinematic Smooth</title>
     <style>
         body {
             margin: 0;
@@ -12,8 +12,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* খুব স্নিগ্ধ একটি সাদাটে গ্রেডিয়েন্ট */
-            background: radial-gradient(circle at center, #ffffff 0%, #eef2f5 100%);
+            /* একটি দারুণ সিনেমাটিক গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড */
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
             overflow: hidden;
         }
 
@@ -21,8 +21,8 @@
             position: relative;
             width: 500px;
             height: 500px;
-            /* পুরো লোগো তৈরি হওয়ার পর খুব শান্তভাবে ভাসবে */
-            animation: gentleFloat 6s ease-in-out infinite 6s; 
+            /* সবগুলো পার্ট আসার পর দারুণ একটি ভাসমান গ্লো শুরু হবে */
+            animation: cinematicFloat 4s ease-in-out infinite 6.5s; 
         }
 
         .logo-part {
@@ -33,93 +33,93 @@
             height: 100%;
             object-fit: contain;
             opacity: 0;
-            /* সময় একটু বাড়িয়ে দেওয়া হয়েছে যাতে খুব স্মুথ দেখায় */
-            animation-duration: 2s; 
+            animation-duration: 1.2s;
             animation-fill-mode: forwards;
-            /* বাটার-স্মুথ ইজিয়িং (কোনো ধাক্কা বা বাউন্স নেই) */
-            animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+            /* একটি কাস্টম 'ইজিয়িং' যা শান্ত কিন্তু শক্তিশালী গতি তৈরি করে */
+            animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* --- ১০টি লেয়ারের একদম স্মুথ টাইমিং --- */
-        .part-1 { z-index: 1; animation-name: smoothScaleFade; animation-delay: 0.2s; }
-        .part-2 { z-index: 2; animation-name: smoothSlideDown; animation-delay: 0.7s; }
-        .part-3 { z-index: 3; animation-name: smoothSlideUp; animation-delay: 1.2s; }
-        .part-4 { z-index: 4; animation-name: smoothSlideRight; animation-delay: 1.7s; }
-        .part-5 { z-index: 5; animation-name: smoothSlideLeft; animation-delay: 2.2s; }
-        .part-6 { z-index: 6; animation-name: smoothRotateFade; animation-delay: 2.7s; }
+        /* --- ১০টি লেয়ারের আকর্ষণীয় সিনেমাটিক টাইমিং ও ইফেক্ট --- */
+        .part-1 { z-index: 1; animation-name: cinZoomIn; animation-delay: 0.2s; }
+        .part-2 { z-index: 2; animation-name: cinDropFromAbove; animation-delay: 0.7s; }
+        .part-3 { z-index: 3; animation-name: cinRiseFromBelow; animation-delay: 1.2s; }
+        .part-4 { z-index: 4; animation-name: cinSwirlLeft; animation-delay: 1.7s; }
+        .part-5 { z-index: 5; animation-name: cinSwirlRight; animation-delay: 2.2s; } 
+        .part-6 { z-index: 6; animation-name: cinDiagonalTopLeft; animation-delay: 2.7s; }
         
-        /* ৭ নম্বর পার্টের জন্য আপনার কথামতো আলতো Fade Up */
-        .part-7 { z-index: 7; animation-name: smoothFadeUpLeaves; animation-delay: 3.2s; }
+        /* ৭ নম্বর পার্টের জন্য আপনার কথামতো স্মুথ 'Fade Up' */
+        .part-7 { z-index: 7; animation-name: smoothFadeUp; animation-delay: 3.2s; animation-duration: 1.5s;}
         
-        .part-8 { z-index: 8; animation-name: smoothDiagonalIn; animation-delay: 3.7s; }
-        .part-9 { z-index: 9; animation-name: smoothDiagonalInAlt; animation-delay: 4.2s; }
-        .part-10 { z-index: 10; animation-name: smoothCenterPop; animation-delay: 4.7s; }
+        .part-8 { z-index: 8; animation-name: cinDiagonalBottomRight; animation-delay: 3.7s; }
+        .part-9 { z-index: 9; animation-name: cinFocus; animation-delay: 4.2s; }
+        .part-10 { z-index: 10; animation-name: cinCenterPop; animation-delay: 4.7s; }
 
-        /* --- আলতো ও স্মুথ Keyframes --- */
+        /* --- সিনেমাটিক Keyframes --- */
 
-        /* হালকা বড় হয়ে ভেসে ওঠা */
-        @keyframes smoothScaleFade {
-            0% { transform: scale(0.85); opacity: 0; }
+        /* আলতোভাবে জুম হয়ে আসা */
+        @keyframes cinZoomIn {
+            0% { transform: scale(1.1); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* ওপর থেকে আলতো করে নামা */
-        @keyframes smoothSlideDown {
-            0% { transform: translateY(-40px); opacity: 0; }
+        /* ওপর থেকে শান্তভাবে নেমে আসা */
+        @keyframes cinDropFromAbove {
+            0% { transform: translateY(-100px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* নিচ থেকে আলতো করে ওঠা */
-        @keyframes smoothSlideUp {
-            0% { transform: translateY(40px); opacity: 0; }
+        /* নিচ থেকে শান্তভাবে উঠে আসা */
+        @keyframes cinRiseFromBelow {
+            0% { transform: translateY(100px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* বাম থেকে আলতো করে আসা */
-        @keyframes smoothSlideRight {
-            0% { transform: translateX(-40px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
+        /* বাম ও ডান দিক থেকে আলতো ঘুরে আসা */
+        @keyframes cinSwirlLeft {
+            0% { transform: translateX(-150px) rotate(-10deg); opacity: 0; filter: blur(3px); }
+            100% { transform: translateX(0) rotate(0); opacity: 1; filter: blur(0); }
+        }
+        
+        @keyframes cinSwirlRight {
+            0% { transform: translateX(150px) rotate(10deg); opacity: 0; filter: blur(3px); }
+            100% { transform: translateX(0) rotate(0); opacity: 1; filter: blur(0); }
         }
 
-        /* ডান থেকে আলতো করে আসা */
-        @keyframes smoothSlideLeft {
-            0% { transform: translateX(40px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
+        /* কোণাকুণি স্লাইড করে আসা */
+        @keyframes cinDiagonalTopLeft {
+            0% { transform: translate(-80px, -80px); opacity: 0; }
+            100% { transform: translate(0, 0); opacity: 1; }
+        }
+        
+        @keyframes cinDiagonalBottomRight {
+            0% { transform: translate(80px, 80px); opacity: 0; }
+            100% { transform: translate(0, 0); opacity: 1; }
         }
 
-        /* হালকা ঘুরে ভেসে ওঠা */
-        @keyframes smoothRotateFade {
-            0% { transform: rotate(-10deg) scale(0.95); opacity: 0; }
-            100% { transform: rotate(0) scale(1); opacity: 1; }
-        }
-
-        /* ৭ নম্বর পার্টের নির্দিষ্ট Fade Up */
-        @keyframes smoothFadeUpLeaves {
+        /* ৭ নম্বর পার্টের নির্দিষ্ট স্মুথ Fade Up */
+        @keyframes smoothFadeUp {
             0% { transform: translateY(20px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
 
-        /* কোণাকুণি আলতো করে আসা */
-        @keyframes smoothDiagonalIn {
-            0% { transform: translate(-20px, -20px); opacity: 0; }
-            100% { transform: translate(0, 0); opacity: 1; }
+        /* ফোকাস করার মতো ইফেক্ট */
+        @keyframes cinFocus {
+            0% { transform: scale(0.9); opacity: 0; filter: blur(8px); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); }
         }
 
-        @keyframes smoothDiagonalInAlt {
-            0% { transform: translate(20px, 20px); opacity: 0; }
-            100% { transform: translate(0, 0); opacity: 1; }
+        /* ১০ নম্বর পার্টের চূড়ান্ত "পপ" (হালকা গ্লো করে জায়গায় বসা) */
+        @keyframes cinCenterPop {
+            0% { transform: scale(0.3); opacity: 0; filter: brightness(1.5); }
+            70% { transform: scale(1.1); filter: brightness(1.2); }
+            100% { transform: scale(1); opacity: 1; filter: brightness(1); }
         }
 
-        /* একদম শেষের পার্টটি স্নিগ্ধভাবে বসে যাওয়া */
-        @keyframes smoothCenterPop {
-            0% { transform: scale(0.9); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; filter: drop-shadow(0 0 8px rgba(237,28,36,0.2)); }
-        }
-
-        /* খুব ধীর এবং স্নিগ্ধ ভাসমান ইফেক্ট */
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+        /* চূড়ান্ত ভাসমান অবস্থা ও রাজকীয় গ্লো */
+        @keyframes cinematicFloat {
+            0% { transform: translateY(0px); filter: drop-shadow(0 10px 10px rgba(0, 166, 81, 0.1)); }
+            50% { transform: translateY(-12px); filter: drop-shadow(0 20px 20px rgba(237, 28, 36, 0.3)); }
+            100% { transform: translateY(0px); filter: drop-shadow(0 10px 10px rgba(0, 166, 81, 0.1)); }
         }
     </style>
 </head>
