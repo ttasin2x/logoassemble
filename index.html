@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangladesh Scouts Logo Animation</title>
+    <title>Bangladesh Scouts 10-Part Ultimate Animation</title>
     <style>
         body {
             margin: 0;
@@ -12,7 +12,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* হালকা একটি গ্রেডিয়েন্ট ব্যাকগ্রাউন্ড */
             background: radial-gradient(circle, #f8f9fa, #ced4da); 
             overflow: hidden;
         }
@@ -21,7 +20,7 @@
             position: relative;
             width: 500px;
             height: 500px;
-            animation: pulseGlow 3s infinite alternate 4s; 
+            animation: pulseGlowFloat 3s infinite alternate 8.5s; 
         }
 
         .logo-part {
@@ -34,73 +33,110 @@
             opacity: 0;
             animation-duration: 1.2s;
             animation-fill-mode: forwards;
-            animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+            animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* লেয়ার ১: বাইরের লাল চাঁদ - নিচ থেকে জুম হয়ে আসবে */
-        .layer-1 {
-            z-index: 1;
-            animation-name: zoomIn;
-            animation-delay: 0.2s;
+        /* ১০টি আলাদা লেয়ারের জন্য আলাদা দিক ও সময় */
+        .part-1 { z-index: 1; animation-name: zoomIn; animation-delay: 0.2s; }
+        .part-2 { z-index: 2; animation-name: slideFromTop; animation-delay: 0.9s; }
+        .part-3 { z-index: 3; animation-name: slideFromBottom; animation-delay: 1.6s; }
+        .part-4 { z-index: 4; animation-name: slideFromLeft; animation-delay: 2.3s; }
+        .part-5 { z-index: 5; animation-name: slideFromRight; animation-delay: 3.0s; }
+        .part-6 { z-index: 6; animation-name: spinIn; animation-delay: 3.7s; }
+        
+        /* ৭ নম্বর পার্টের জন্য ব্লিংক ইফেক্ট ও একটু বেশি সময় (duration) */
+        .part-7 { 
+            z-index: 7; 
+            animation-name: blinkIn; 
+            animation-delay: 4.4s; 
+            animation-duration: 2s; /* ব্লিংকটা যেন স্পষ্ট বোঝা যায় */
         }
+        
+        .part-8 { z-index: 8; animation-name: slideFromBottomRight; animation-delay: 5.1s; }
+        .part-9 { z-index: 9; animation-name: scaleUpDrop; animation-delay: 5.8s; }
+        .part-10 { z-index: 10; animation-name: popInFade; animation-delay: 6.5s; }
 
-        /* লেয়ার ২: ভেতরের সাদা বৃত্ত - ওপর থেকে ঘুরে আসবে */
-        .layer-2 {
-            z-index: 2;
-            animation-name: spinDrop;
-            animation-delay: 1.2s;
-        }
 
-        /* লেয়ার ৩: ওপরের সবুজ লিলি ও লাল বৃত্ত - বাঁ থেকে স্লাইড করে আসবে */
-        .layer-3 {
-            z-index: 3;
-            animation-name: slideRight;
-            animation-delay: 2.0s;
-        }
-
-        /* লেয়ার ৪: নিচের সবুজ অংশ - ডান থেকে স্লাইড করে আসবে */
-        .layer-4 {
-            z-index: 4;
-            animation-name: slideLeft;
-            animation-delay: 2.8s;
-        }
-
-        /* --- Keyframes --- */
+        /* --- Keyframes (অ্যানিমেশন স্টাইল) --- */
 
         @keyframes zoomIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { opacity: 1; }
+            0% { transform: scale(0.2); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
-        @keyframes spinDrop {
-            0% { transform: translateY(-200px) rotate(-180deg) scale(0.5); opacity: 0; }
-            100% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+        @keyframes slideFromTop {
+            0% { transform: translateY(-300px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
-        @keyframes slideRight {
-            0% { transform: translateX(-200px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
+        @keyframes slideFromBottom {
+            0% { transform: translateY(300px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
 
-        @keyframes slideLeft {
-            0% { transform: translateX(200px); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
+        @keyframes slideFromLeft {
+            0% { transform: translateX(-300px) rotate(-45deg); opacity: 0; }
+            100% { transform: translateX(0) rotate(0); opacity: 1; }
         }
 
-        @keyframes pulseGlow {
-            0% { filter: drop-shadow(0 0 10px rgba(0, 166, 81, 0.2)); }
-            100% { filter: drop-shadow(0 0 25px rgba(237, 28, 36, 0.6)); }
+        @keyframes slideFromRight {
+            0% { transform: translateX(300px) rotate(45deg); opacity: 0; }
+            100% { transform: translateX(0) rotate(0); opacity: 1; }
+        }
+
+        @keyframes spinIn {
+            0% { transform: rotate(-360deg) scale(0.5); opacity: 0; }
+            100% { transform: rotate(0) scale(1); opacity: 1; }
+        }
+
+        /* নতুন ব্লিংক (Blink) ইফেক্ট */
+        @keyframes blinkIn {
+            0%   { opacity: 0; transform: scale(0.9); }
+            15%  { opacity: 1; transform: scale(1); }
+            30%  { opacity: 0; }
+            45%  { opacity: 1; }
+            60%  { opacity: 0; }
+            75%  { opacity: 1; }
+            90%  { opacity: 0; }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes slideFromBottomRight {
+            0% { transform: translate(200px, 200px); opacity: 0; }
+            100% { transform: translate(0, 0); opacity: 1; }
+        }
+
+        @keyframes scaleUpDrop {
+            0% { transform: scale(2) translateY(-50px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+
+        @keyframes popInFade {
+            0% { transform: scale(0.1); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* সব শেষে পুরো লোগোর গ্লো ইফেক্ট */
+        @keyframes pulseGlowFloat {
+            0% { transform: translateY(0); filter: drop-shadow(0 0 10px rgba(0, 166, 81, 0.3)); }
+            50% { transform: translateY(-12px); filter: drop-shadow(0 0 30px rgba(237, 28, 36, 0.8)); }
+            100% { transform: translateY(0); filter: drop-shadow(0 0 10px rgba(0, 166, 81, 0.3)); }
         }
     </style>
 </head>
 <body>
 
     <div class="logo-container">
-        <img src="photos/bs logo (4).png" alt="Outer Crescent" class="logo-part layer-1">
-        <img src="photos/bs logo (3).png" alt="White Circle" class="logo-part layer-2">
-        <img src="photos/bs logo (1).png" alt="Top Lily" class="logo-part layer-3">
-        <img src="photos/bs logo (2).png" alt="Bottom Lily" class="logo-part layer-4">
+        <img src="photos/bs logo (1).png" alt="Part 1" class="logo-part part-1">
+        <img src="photos/bs logo (2).png" alt="Part 2" class="logo-part part-2">
+        <img src="photos/bs logo (3).png" alt="Part 3" class="logo-part part-3">
+        <img src="photos/bs logo (4).png" alt="Part 4" class="logo-part part-4">
+        <img src="photos/bs logo (5).jpg" alt="Part 5" class="logo-part part-5"> 
+        <img src="photos/bs logo (6).png" alt="Part 6" class="logo-part part-6">
+        <img src="photos/bs logo (7).png" alt="Part 7" class="logo-part part-7">
+        <img src="photos/bs logo (8).png" alt="Part 8" class="logo-part part-8">
+        <img src="photos/bs logo (9).png" alt="Part 9" class="logo-part part-9">
+        <img src="photos/bs logo (10).png" alt="Part 10" class="logo-part part-10">
     </div>
 
 </body>
