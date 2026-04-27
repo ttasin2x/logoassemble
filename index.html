@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>বাংলাদেশ স্কাউটস - লোগো অ্যানিমেশন</title>
+    <title>Bangladesh Scouts - Ultimate Cinematic Assembly</title>
     <style>
         body {
             margin: 0;
@@ -12,143 +12,139 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            /* একটি প্রিমিয়াম সাদা ও গ্রে রেডিয়াল ব্যাকগ্রাউন্ড */
             background: radial-gradient(circle at center, #ffffff 0%, #e8eaf0 100%);
             overflow: hidden;
-            font-family: Arial, sans-serif;
         }
 
         .logo-container {
             position: relative;
-            width: 400px;
-            height: 400px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* সম্পূর্ণ অ্যাসেম্বল হওয়ার পর শাইন এবং পালস করবে */
-            animation: finalAssemblyPulsate 2s infinite ease-in-out 7s; 
+            width: 500px;
+            height: 500px;
+            /* কন্টেইনারের বাইরে আলোর ঝলক যেন না যায় তাই hidden */
+            overflow: hidden; 
+            /* সব শেষে ভাসমান গ্লো */
+            animation: finalFloat 4s ease-in-out infinite 8.5s; 
+            border-radius: 50%; /* আলোটা যাতে বৃত্তাকার হয়ে যায় */
         }
 
         .logo-part {
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
             opacity: 0;
-            /* একটি দারুণ স্মুথ ইজিয়িং ফাংশন */
-            animation-duration: 2s;
+            animation-duration: 1.5s;
             animation-fill-mode: forwards;
             animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* সম্পূর্ণ লোগোর উপর শাইন ইফেক্টের জন্য একটি অতিরিক্ত ওভারলে */
-        .logo-shine {
+        /* --- ১০টি লেয়ারের টাইমিং (আপনার ফোল্ডারের ফাইল অনুযায়ী) --- */
+        .part-1 { z-index: 1; animation-name: cinZoomIn; animation-delay: 0.2s; }
+        .part-2 { z-index: 2; animation-name: cinDropFromAbove; animation-delay: 0.8s; }
+        .part-3 { z-index: 3; animation-name: cinRiseFromBelow; animation-delay: 1.4s; }
+        .part-4 { z-index: 4; animation-name: cinSwirlLeft; animation-delay: 2.0s; }
+        .part-5 { z-index: 5; animation-name: cinSwirlRight; animation-delay: 2.6s; } 
+        .part-6 { z-index: 6; animation-name: cinDiagonalTopLeft; animation-delay: 3.2s; }
+        /* ৭ নম্বর পার্টের জন্য স্মুথ Fade Up */
+        .part-7 { z-index: 7; animation-name: smoothFadeUp; animation-delay: 3.8s; animation-duration: 1.5s;}
+        .part-8 { z-index: 8; animation-name: cinDiagonalBottomRight; animation-delay: 4.4s; }
+        .part-9 { z-index: 9; animation-name: cinFocus; animation-delay: 5.0s; }
+        .part-10 { z-index: 10; animation-name: cinCenterPop; animation-delay: 5.6s; }
+
+        /* --- দ্য সিনেমাটিক শাইন ইফেক্ট (আলোর ঝলক) --- */
+        .shine-effect {
             position: absolute;
-            width: 100%;
+            top: 0;
+            left: -150%;
+            width: 50%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 40%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0) 60%, rgba(255,255,255,0) 100%);
-            z-index: 10;
+            /* আলোকরশ্মির গ্রেডিয়েন্ট */
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); /* একটু বাঁকানো আলো */
+            z-index: 20; /* সবার উপরে থাকবে */
             opacity: 0;
-            pointer-events: none; /* যাতে শাইন ইফেক্ট মাউস ক্লিক আটকায় না */
-            /* সম্পূর্ণ অ্যাসেম্বল হওয়ার পর শাইন করবে */
-            animation: finalShine 1s ease-in-out 6.5s forwards; 
+            pointer-events: none;
+            /* সবগুলো পার্ট বসার পর (৭ সেকেন্ডে) আলোটা স্লাইড করবে */
+            animation: sweepLight 2s ease-in-out 7s forwards;
         }
 
-        /* --- ১০টি আলাদা অংশের অ্যাসেম্বলি টাইমিং ও ইফেক্ট --- */
+        /* --- Keyframes (অ্যানিমেশন) --- */
 
-        .part-1 { z-index: 1; animation-name: cinematicSwirlInLeft; animation-delay: 0.2s; }
-        .part-2 { z-index: 2; animation-name: cinematicSwirlInRight; animation-delay: 0.8s; }
-        .part-3 { z-index: 3; animation-name: cinematicScaleZoomIn; animation-delay: 1.4s; }
-        .part-4 { z-index: 4; animation-name: cinematicDropFadeDown; animation-delay: 2.0s; }
-        .part-5 { z-index: 5; animation-name: cinematicRiseFadeUp; animation-delay: 2.6s; }
-        .part-6 { z-index: 6; animation-name: cinematicDiagonalTopLeft; animation-delay: 3.2s; }
-        .part-7 { z-index: 7; animation-name: cinematicDiagonalBottomRight; animation-delay: 3.8s; }
-        .part-8 { z-index: 8; animation-name: cinematicRotateBlurIn; animation-delay: 4.4s; }
-        .part-9 { z-index: 9; animation-name: cinematicFocusIn; animation-delay: 5.0s; }
-        .part-10 { z-index: 10; animation-name: cinematicFinalPop; animation-delay: 5.6s; }
-
-        /* --- সিনেমাটিক Keyframes --- */
-
-        @keyframes cinematicSwirlInLeft {
-            0% { transform: translateX(-150px) rotate(-15deg); opacity: 0; }
-            100% { transform: translateX(0) rotate(0); opacity: 1; }
-        }
-
-        @keyframes cinematicSwirlInRight {
-            0% { transform: translateX(150px) rotate(15deg); opacity: 0; }
-            100% { transform: translateX(0) rotate(0); opacity: 1; }
-        }
-
-        @keyframes cinematicScaleZoomIn {
+        @keyframes cinZoomIn {
             0% { transform: scale(1.1); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
-
-        @keyframes cinematicDropFadeDown {
-            0% { transform: translateY(-80px); opacity: 0; }
+        @keyframes cinDropFromAbove {
+            0% { transform: translateY(-100px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-
-        @keyframes cinematicRiseFadeUp {
-            0% { transform: translateY(80px); opacity: 0; }
+        @keyframes cinRiseFromBelow {
+            0% { transform: translateY(100px); opacity: 0; }
             100% { transform: translateY(0); opacity: 1; }
         }
-
-        @keyframes cinematicDiagonalTopLeft {
+        @keyframes cinSwirlLeft {
+            0% { transform: translateX(-150px) rotate(-10deg); opacity: 0; filter: blur(3px); }
+            100% { transform: translateX(0) rotate(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes cinSwirlRight {
+            0% { transform: translateX(150px) rotate(10deg); opacity: 0; filter: blur(3px); }
+            100% { transform: translateX(0) rotate(0); opacity: 1; filter: blur(0); }
+        }
+        @keyframes cinDiagonalTopLeft {
             0% { transform: translate(-80px, -80px); opacity: 0; }
             100% { transform: translate(0, 0); opacity: 1; }
         }
-
-        @keyframes cinematicDiagonalBottomRight {
+        @keyframes smoothFadeUp {
+            0% { transform: translateY(20px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes cinDiagonalBottomRight {
             0% { transform: translate(80px, 80px); opacity: 0; }
             100% { transform: translate(0, 0); opacity: 1; }
         }
-
-        @keyframes cinematicRotateBlurIn {
-            0% { transform: rotate(-10deg) scale(0.9); opacity: 0; filter: blur(3px); }
-            100% { transform: rotate(0) scale(1); opacity: 1; filter: blur(0); }
-        }
-
-        @keyframes cinematicFocusIn {
-            0% { transform: scale(0.9); opacity: 0; filter: blur(10px); }
+        @keyframes cinFocus {
+            0% { transform: scale(0.9); opacity: 0; filter: blur(8px); }
             100% { transform: scale(1); opacity: 1; filter: blur(0); }
         }
-
-        @keyframes cinematicFinalPop {
+        @keyframes cinCenterPop {
             0% { transform: scale(0.3); opacity: 0; filter: brightness(1.5); }
-            80% { transform: scale(1.1); filter: brightness(1.1); }
+            70% { transform: scale(1.1); filter: brightness(1.2); }
             100% { transform: scale(1); opacity: 1; filter: brightness(1); }
         }
 
-        /* সম্পূর্ণ লোগোর উপর চূড়ান্ত শাইন ইফেক্ট */
-        @keyframes finalShine {
-            0% { opacity: 0; }
-            20% { opacity: 1; }
-            100% { opacity: 0; }
+        /* শাইন অ্যানিমেশন (বাঁ থেকে ডানে যাবে) */
+        @keyframes sweepLight {
+            0% { left: -150%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: 200%; opacity: 0; }
         }
 
-        /* শাইন করার পর লোগোর পালস এবং গ্লো ইফেক্ট */
-        @keyframes finalAssemblyPulsate {
-            0%, 100% { transform: translateY(0px) scale(1); filter: drop-shadow(0 10px 10px rgba(0, 166, 81, 0.1)); }
-            50% { transform: translateY(-12px) scale(1.02); filter: drop-shadow(0 20px 20px rgba(237, 28, 36, 0.3)); }
+        /* চূড়ান্ত ভাসমান অবস্থা */
+        @keyframes finalFloat {
+            0% { transform: translateY(0px); filter: drop-shadow(0 10px 10px rgba(0, 166, 81, 0.1)); }
+            50% { transform: translateY(-12px); filter: drop-shadow(0 20px 20px rgba(237, 28, 36, 0.3)); }
+            100% { transform: translateY(0px); filter: drop-shadow(0 10px 10px rgba(0, 166, 81, 0.1)); }
         }
     </style>
 </head>
 <body>
 
     <div class="logo-container">
-        <img src="bs_logo_1.png" alt="অংশ ১" class="logo-part part-1">
-        <img src="bs_logo_2.png" alt="অংশ ২" class="logo-part part-2">
-        <img src="bs_logo_3.png" alt="অংশ ৩" class="logo-part part-3">
-        <img src="bs_logo_4.png" alt="অংশ ৪" class="logo-part part-4">
-        <img src="bs_logo_5.png" alt="অংশ ৫" class="logo-part part-5"> 
-        <img src="bs_logo_6.png" alt="অংশ ৬" class="logo-part part-6">
-        <img src="bs_logo_7.png" alt="অংশ ৭" class="logo-part part-7">
-        <img src="bs_logo_8.png" alt="অংশ ৮" class="logo-part part-8">
-        <img src="bs_logo_9.png" alt="অংশ ৯" class="logo-part part-9">
-        <img src="bs_logo_10.png" alt="অংশ ১০" class="logo-part part-10">
+        <img src="photos/bs logo (1).png" alt="Part 1" class="logo-part part-1">
+        <img src="photos/bs logo (2).png" alt="Part 2" class="logo-part part-2">
+        <img src="photos/bs logo (3).png" alt="Part 3" class="logo-part part-3">
+        <img src="photos/bs logo (4).png" alt="Part 4" class="logo-part part-4">
+        <img src="photos/bs logo (5).png" alt="Part 5" class="logo-part part-5"> 
+        <img src="photos/bs logo (6).png" alt="Part 6" class="logo-part part-6">
+        <img src="photos/bs logo (7).png" alt="Part 7" class="logo-part part-7">
+        <img src="photos/bs logo (8).png" alt="Part 8" class="logo-part part-8">
+        <img src="photos/bs logo (9).png" alt="Part 9" class="logo-part part-9">
+        <img src="photos/bs logo (10).png" alt="Part 10" class="logo-part part-10">
 
-        <div class="logo-shine"></div>
+        <div class="shine-effect"></div>
     </div>
 
 </body>
